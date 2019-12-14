@@ -1,8 +1,8 @@
 # apache2-php5
 
-Apache 2.x + mod\_php 5.x
+Apache 2.x + mod\_php 7.x
 
-Based on debian:jessie.
+Based on debian:buster.
 
 ## Building
 

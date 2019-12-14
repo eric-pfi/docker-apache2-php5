@@ -30,10 +30,6 @@ for mod in $(echo $PHP_MODS | tr ',' ' '); do
     php5enmod -s ALL $mod
 done
 
-if [ -n "$PHP_NEWRELIC_LICENSE_KEY" -a -n "$PHP_NEWRELIC_APPNAME" ]; then
-    php5enmod -s apache2 newrelic
-fi
-
 export APACHE_SERVER_NAME="${APACHE_SERVER_NAME:-$(hostname)}"
 export APACHE_DOCUMENT_ROOT="${APACHE_DOCUMENT_ROOT:-/var/www/html}"
 
@@ -50,6 +46,8 @@ if [ "$1" = 'apache2' ]; then
     done
 
     echo "Starting Apache 2.x in foreground."
+    echo "--> Document root environment variable: ${APACHE_DOCUMENT_ROOT}"
+    echo "--> Server name environment variable: ${APACHE_SERVER_NAME}"
     exec /usr/sbin/apache2 -D FOREGROUND
 fi
 
