@@ -184,6 +184,7 @@ Include ports.conf
 </Directory>
 
 <Directory ${APACHE_DOCUMENT_ROOT}>
+	AddType application/x-httpd-php .php
 	AllowOverride ${APACHE_ALLOW_OVERRIDE}
 	Require all granted
 </Directory>
