@@ -17,6 +17,7 @@ RUN \
         libaprutil1-dbg \
         msmtp-mta \
         php \
+        php7.3-mbstring \
         php-curl \
         php-json \
         postgresql-client \
@@ -37,7 +38,7 @@ RUN curl -#L https://github.com/kelseyhightower/confd/releases/download/v0.16.0/
 # Prepare for environment-configured Apache and PHP setup
 RUN rm /etc/php/7.3/apache2/conf.d/* \
     && rm /etc/php/7.3/cli/conf.d/* \
-    && phpenmod pdo pdo_pgsql curl json \
+    && phpenmod pdo pdo_pgsql curl json mbstring \
     && phpenmod -s ALL opcache \
     && rm /etc/apache2/conf-enabled/* \
     && rm /etc/apache2/mods-enabled/* \
@@ -57,7 +58,7 @@ ENV APACHE_MAX_REQUEST_WORKERS 32
 ENV APACHE_MAX_CONNECTIONS_PER_CHILD 1024
 ENV APACHE_ALLOW_OVERRIDE   None
 ENV APACHE_ALLOW_ENCODED_SLASHES Off
-ENV APACHE_ERRORLOG         ""
+ENV APACHE_ERRORLOG         "/dev/stdout"
 ENV APACHE_CUSTOMLOG        ""
 ENV APACHE_LOGLEVEL         error
 ENV PHP_TIMEZONE            UTC
