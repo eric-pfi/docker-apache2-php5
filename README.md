@@ -1,3 +1,5 @@
+THIS PROJECT IS OBSOLETE - Use pfi-developers/base-server.
+
 # apache2-php5
 
 Apache 2.x + mod\_php 7.x
